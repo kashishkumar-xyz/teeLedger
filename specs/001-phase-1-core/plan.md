@@ -64,6 +64,10 @@ src/
 ├── backup.rs            # Implements online backup API, atomic snapshots
 └── recovery.rs          # Handles integrity checks, automated recovery, rollback
 
+cli/
+└── src/
+    └── main.rs          # CLI application entry point
+
 data/
 └── backups/             # Directory for encrypted DB snapshots
 
@@ -76,7 +80,8 @@ tests/
 │   ├── backup_test.rs
 │   └── recovery_test.rs
 └── integration/
-    └── ledger_integration_test.rs
+    ├── ledger_integration_test.rs
+    └── cli_test.rs      # CLI integration tests
 ```
 
 ## Complexity Tracking

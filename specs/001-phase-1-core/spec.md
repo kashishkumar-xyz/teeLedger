@@ -100,6 +100,8 @@ As a user, I want to view the total amount a specific person owes me or I owe th
 - **FR-008**: The system MUST provide an interface for mobile UI integration (FFI/JNI).
 - **FR-009**: The system MUST include comprehensive unit tests for core logic and database interactions.
 - **FR-010**: The system MUST implement automated recovery for corrupted or inaccessible database files and notify the user if recovery fails, with an option to revert to a last healthy state (e.g., via VCS).
+- **FR-011**: The system MUST provide a command-line interface (CLI) for interacting with core ledger functionalities (add, list, balance, backup, restore).
+- **FR-012**: The CLI MUST provide clear usage instructions and error messages for invalid commands or arguments.
 
 ### Key Entities *(include if feature involves data)*
 

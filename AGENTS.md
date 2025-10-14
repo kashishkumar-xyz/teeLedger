@@ -32,7 +32,7 @@ tests/
 ```
 
 ## Commands
-cargo test [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] cargo clippy
+cargo test && cargo clippy && cargo run --bin teeLedger-cli -- --help
 
 ## Code Style
 Rust 1.75+: Follow standard conventions
