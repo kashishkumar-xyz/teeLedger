@@ -91,3 +91,4 @@ tests/
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
 | | Layered Backup & Recovery | Ensures high data integrity and recoverability in a secure, offline environment. | Simpler file copying or no recovery mechanisms would compromise security and data loss prevention, which are core project principles. |
+| | CLI Integration | Provides a robust interface for early testing, debugging, and post-release support, aligning with the "CLI Interface" principle. | Deferring CLI development would hinder early development feedback and limit post-release diagnostic capabilities. |

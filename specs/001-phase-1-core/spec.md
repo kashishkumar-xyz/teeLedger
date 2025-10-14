@@ -84,7 +84,7 @@ As a user, I want to view the total amount a specific person owes me or I owe th
 
 - If the database file is corrupted or inaccessible, the system MUST attempt automated recovery. If recovery fails, the user MUST be notified, and the system SHOULD revert to the last healthy state according to version control (VCS) if applicable.
 - How does the system handle extremely large numbers of transactions (performance)?
-- What happens if the encryption key is incorrect when opening the database?
+- **FR-013**: The system MUST gracefully handle incorrect encryption keys during database opening by rejecting the operation and providing a clear error message to the user.
 
 ## Requirements *(mandatory)*
 
@@ -102,6 +102,8 @@ As a user, I want to view the total amount a specific person owes me or I owe th
 - **FR-010**: The system MUST implement automated recovery for corrupted or inaccessible database files and notify the user if recovery fails, with an option to revert to a last healthy state (e.g., via VCS).
 - **FR-011**: The system MUST provide a command-line interface (CLI) for interacting with core ledger functionalities (add, list, balance, backup, restore).
 - **FR-012**: The CLI MUST provide clear usage instructions and error messages for invalid commands or arguments.
+- **FR-014**: The system MUST use HMAC-SHA256 for checksums to verify the integrity of backup files.
+- **FR-015**: The CLI MUST support argument parsing using the `clap` library.
 
 ### Key Entities *(include if feature involves data)*
 

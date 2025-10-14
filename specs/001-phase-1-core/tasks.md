@@ -26,6 +26,8 @@
 - [ ] T004 [P] Create `cli/src/main.rs` for the CLI application
 - [ ] T005 [P] Create `data/backups/` directory
 - [ ] T006 [P] Configure `tests/unit/` and `tests/integration/` directories with initial test files
+- [ ] T007 Implement HMAC-SHA256 for backup checksums in `src/backup.rs`
+- [ ] T008 Implement CLI argument parsing using `clap` in `cli/src/main.rs`
 
 ---
 
