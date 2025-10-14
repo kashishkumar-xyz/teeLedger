@@ -12,14 +12,21 @@ This plan outlines the development of the core Rust library for teeLedger, focus
 ## Technical Context
 
 **Language/Version**: Rust 1.75+  
-**Primary Dependencies**: rusqlite, jni (for FFI/JNI interface)  
-**Storage**: SQLite (encrypted via SQLCipher)  
+**Primary Dependencies**: rusqlite, jni (for FFI/JNI interface), zeroize, base64, hmac (for checksums)  
+**Storage**: SQLCipher-encrypted SQLite in app private storage (WAL mode enabled). Key management via Android Keystore (KEK) and encrypted DEK.  
 **Testing**: cargo test  
 **Target Platform**: Android (via JNI)  
 **Project Type**: Library (cdylib)  
-**Performance Goals**: Transaction recording < 2 seconds; Balance calculation < 3 seconds for 10,000 transactions  
-**Constraints**: Offline-capable, minimal memory footprint, strong security  
-**Scale/Scope**: Up to 10,000 transactions, single-user local ledger
+**Performance Goals**: Transaction recording < 2 seconds; Balance calculation < 3 seconds for 10,000 transactions; Backup/restore operations < 5 seconds for typical ledger size.  
+**Constraints**: Offline-capable, minimal memory footprint, strong security, robust data recovery.  
+**Scale/Scope**: Up to 10,000 transactions, single-user local ledger.
+
+### Backup & Recovery Strategy
+The system employs a layered backup and recovery strategy:
+- **Fast Recovery**: Regular encrypted file-level snapshots saved atomically in app-private backups folder.
+- **Fine-grained History**: Append-only audit/version tables for critical entities (transactions) to reconstruct recent logical state.
+- **Corruption Detection**: `PRAGMA integrity_check` at startup and periodically.
+- **Automated Remediation**: Attempt automated recovery from latest valid local backup; if failed, notify user and offer revert to last healthy state (application-managed VCS).
 
 ## Constitution Check
 
@@ -52,18 +59,25 @@ src/
 ├── lib.rs               # Main library entry point
 ├── models.rs            # Defines Transaction and Balance structs
 ├── db.rs                # SQLite interaction logic
-└── ffi.rs               # FFI/JNI interface
+├── ffi.rs               # FFI/JNI interface
+├── key_management.rs    # Handles DEK generation, Keystore wrapping/unwrapping
+├── backup.rs            # Implements online backup API, atomic snapshots
+└── recovery.rs          # Handles integrity checks, automated recovery, rollback
+
+data/
+└── backups/             # Directory for encrypted DB snapshots
 
 tests/
 ├── unit/
 │   ├── models_test.rs
 │   ├── db_test.rs
-│   └── ffi_test.rs
+│   ├── ffi_test.rs
+│   ├── key_management_test.rs
+│   ├── backup_test.rs
+│   └── recovery_test.rs
 └── integration/
     └── ledger_integration_test.rs
 ```
-
-**Structure Decision**: A single project structure with `src/` for the Rust library and `tests/` for unit and integration tests. The `src` directory is further organized into modules for clarity.
 
 ## Complexity Tracking
 
@@ -71,4 +85,4 @@ tests/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| N/A | N/A | N/A |
+| | Layered Backup & Recovery | Ensures high data integrity and recoverability in a secure, offline environment. | Simpler file copying or no recovery mechanisms would compromise security and data loss prevention, which are core project principles. |

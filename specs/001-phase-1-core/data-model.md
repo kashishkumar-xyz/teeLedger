@@ -41,3 +41,24 @@ Represents the aggregated financial standing with a person. This is a derived en
 **Validation Rules:**
 
 - None (derived entity, consistency depends on `Transaction` validation).
+
+### Transaction History (Append-Only Versioned Table)
+
+Represents the logical history of `Transaction` entities for fine-grained rollback and auditing.
+
+**Attributes:**
+
+- `tx_id`: Domain ID of the transaction (TEXT, stable across versions).
+- `version`: Monotonic version number for each `tx_id` (INTEGER).
+- `data`: JSON payload of the transaction at this version (JSON).
+- `op`: Type of operation ('insert', 'update', 'delete') (TEXT).
+- `created_at`: Timestamp of the record creation (TIMESTAMP, default CURRENT_TIMESTAMP).
+
+**Relationships:**
+
+- Tracks historical states of `Transaction` entities.
+
+**Validation Rules:**
+
+- `tx_id`, `version` form a primary key.
+- `op` must be one of 'insert', 'update', 'delete'.
