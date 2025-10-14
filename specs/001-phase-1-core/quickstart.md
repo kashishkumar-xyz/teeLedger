@@ -44,3 +44,4 @@ This guide provides a quick overview of how to set up, build, and test the core 
 - The Rust library exposes functions via a C ABI, which can be called from Java/Kotlin using JNI.
 - Refer to the `ffi.rs` file for the exposed function signatures.
 - Example JNI calls will be provided in the Android application layer.
+- **Important**: For secure database operations, ensure proper key management (e.g., using Android Keystore) and consider database recovery strategies as detailed in `spec.md` and `research.md`.

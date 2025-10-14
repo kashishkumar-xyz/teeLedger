@@ -82,7 +82,7 @@ As a user, I want to view the total amount a specific person owes me or I owe th
 
 ### Edge Cases
 
-- What happens when the database file is corrupted or inaccessible?
+- If the database file is corrupted or inaccessible, the system MUST attempt automated recovery. If recovery fails, the user MUST be notified, and the system SHOULD revert to the last healthy state according to version control (VCS) if applicable.
 - How does the system handle extremely large numbers of transactions (performance)?
 - What happens if the encryption key is incorrect when opening the database?
 
@@ -96,14 +96,22 @@ As a user, I want to view the total amount a specific person owes me or I owe th
 - **FR-004**: The system MUST calculate and display the net balance for a specific person.
 - **FR-005**: The system MUST display a list of all recorded transactions.
 - **FR-006**: The system MUST validate transaction input data (e.g., non-empty person, valid amount).
-- **FR-007**: The system MUST persist all transaction data using an encrypted SQLite database.
+- **FR-007**: The system MUST persist all transaction data using an encrypted SQLite database, with the encryption key managed by the Android Keystore (hardware-backed).
 - **FR-008**: The system MUST provide an interface for mobile UI integration (FFI/JNI).
 - **FR-009**: The system MUST include comprehensive unit tests for core logic and database interactions.
+- **FR-010**: The system MUST implement automated recovery for corrupted or inaccessible database files and notify the user if recovery fails, with an option to revert to a last healthy state (e.g., via VCS).
 
 ### Key Entities *(include if feature involves data)*
 
 - **Transaction**: Represents a single financial event. Attributes: `id` (unique identifier), `date` (ISO 8601), `person` (involved party), `amount` (integer, positive for owed to user, negative for owed by user), `note` (optional description).
 - **Balance**: Represents the aggregated financial standing with a person. Attributes: `person`, `total_amount` (integer, net balance).
+
+## Clarifications
+
+### Session 2025-10-14
+
+- Q: How will the encryption key for the SQLite database be managed on Android? → A: Android Keystore (hardware-backed)
+- Q: How should the system respond to a corrupted or inaccessible database file? → A: use VCS; try "option B", incase of failed recovery let user know and revert back to last healthy state according to VCS
 
 ## Success Criteria *(mandatory)*
 

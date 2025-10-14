@@ -30,12 +30,24 @@ This document outlines the API contracts for the core Rust library, focusing on 
 
 ### `init_db`
 
-**Description**: Initializes a new SQLite database with encryption.
+**Description**: Initializes a new SQLite database with encryption. The `encryption_key` is expected to be retrieved from a secure source like the Android Keystore.
 **Inputs**: `db_path` (string), `encryption_key` (byte array).
 **Outputs**: Success/Error status.
 
 ### `open_db`
 
-**Description**: Opens an existing encrypted SQLite database.
+**Description**: Opens an existing encrypted SQLite database. The `encryption_key` is expected to be retrieved from a secure source like the Android Keystore.
 **Inputs**: `db_path` (string), `encryption_key` (byte array).
+**Outputs**: Success/Error status.
+
+### `backup_db`
+
+**Description**: Creates an encrypted backup of the database file.
+**Inputs**: `db_path` (string), `encryption_key` (byte array), `backup_path` (string).
+**Outputs**: Success/Error status.
+
+### `restore_db`
+
+**Description**: Restores a database from an encrypted backup file.
+**Inputs**: `backup_path` (string), `encryption_key` (byte array), `db_path` (string).
 **Outputs**: Success/Error status.
