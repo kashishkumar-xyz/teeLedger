@@ -1,0 +1,18 @@
+CLI
+	{MODE}
+		1. view
+			# total $ recievables (+)
+			[...] list of all accounts
+				[++] Accounts that owe us money
+				======>>
+					view indivual account
+				[--] list of accounts we owe money to
+			$ current balance
+			# total $ payable (-)
+		2. insert
+			new user?
+				create new user with amount = 0
+					<go to existing user flow>
+			existing user?
+				enter amount & select sign (+/-)
+
