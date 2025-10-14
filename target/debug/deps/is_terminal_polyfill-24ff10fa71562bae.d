@@ -1,0 +1,7 @@
+/home/kaz/Dev/rust/_current/teeLedger/target/debug/deps/is_terminal_polyfill-24ff10fa71562bae.d: /home/kaz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.1/src/lib.rs
+
+/home/kaz/Dev/rust/_current/teeLedger/target/debug/deps/libis_terminal_polyfill-24ff10fa71562bae.rlib: /home/kaz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.1/src/lib.rs
+
+/home/kaz/Dev/rust/_current/teeLedger/target/debug/deps/libis_terminal_polyfill-24ff10fa71562bae.rmeta: /home/kaz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.1/src/lib.rs
+
+/home/kaz/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/is_terminal_polyfill-1.70.1/src/lib.rs:

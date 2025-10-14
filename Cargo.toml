@@ -1,0 +1,17 @@
+[package]
+name = "teeLedger"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rusqlite = { version = "0.31.0", features = ["bundled", "sqlcipher", "backup"] }
+jni = { version = "0.21.1", default-features = false }
+zeroize = { version = "1.7.0", features = ["derive"] }
+base64 = "0.21.7"
+hmac = "0.12.1"
+sha2 = "0.10.8"
+clap = { version = "4.4.11", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.8"
+serde = { version = "1.0", features = ["derive"] }
+digest = "0.10"
