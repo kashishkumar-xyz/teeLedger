@@ -6,11 +6,11 @@ pub fn perform_online_restore(
     src_path: &str,
     encryption_key: &[u8],
 ) -> rusqlite::Result<()> {
-    let mut src_conn = Connection::open(src_path)?;
+    let src_conn = Connection::open(src_path)?;
     let key_b64 = general_purpose::STANDARD.encode(encryption_key);
     src_conn.pragma_update(None, "key", &key_b64)?;
 
-    let mut backup = rusqlite::backup::Backup::new(&src_conn, dest_conn)?;
+    let backup = rusqlite::backup::Backup::new(&src_conn, dest_conn)?;
     backup.step(-1)?;
 
     Ok(())

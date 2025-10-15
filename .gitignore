@@ -1,2 +1,5 @@
 debug
 target
+**/*.rs.bk
+*.sqlite*
+.env

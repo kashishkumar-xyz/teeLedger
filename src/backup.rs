@@ -28,7 +28,7 @@ pub fn perform_online_backup(
     let key_b64 = general_purpose::STANDARD.encode(encryption_key);
     dest_conn.pragma_update(None, "key", &key_b64)?;
 
-    let mut backup = rusqlite::backup::Backup::new(src_conn, &mut dest_conn)?;
+    let backup = rusqlite::backup::Backup::new(src_conn, &mut dest_conn)?;
     backup.step(-1)?;
 
     Ok(())

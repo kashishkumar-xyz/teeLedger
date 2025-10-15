@@ -20,14 +20,14 @@
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create Rust library project (`cdylib`) in `src/`
-- [ ] T002 Configure `Cargo.toml` with `rusqlite`, `jni`, `zeroize`, `base64`, `hmac`, `clap` dependencies
-- [ ] T003 [P] Create `src/models.rs`, `src/db.rs`, `src/ffi.rs`, `src/key_management.rs`, `src/backup.rs`, `src/recovery.rs`
-- [ ] T004 [P] Create `cli/src/main.rs` for the CLI application
-- [ ] T005 [P] Create `data/backups/` directory
-- [ ] T006 [P] Configure `tests/unit/` and `tests/integration/` directories with initial test files
-- [ ] T007 Implement HMAC-SHA256 for backup checksums in `src/backup.rs`
-- [ ] T008 Implement CLI argument parsing using `clap` in `cli/src/main.rs`
+- [x] T001 Create Rust library project (`cdylib`) in `src/`
+- [x] T002 Configure `Cargo.toml` with `rusqlite`, `jni`, `zeroize`, `base64`, `hmac`, `clap` dependencies
+- [x] T003 [P] Create `src/models.rs`, `src/db.rs`, `src/ffi.rs`, `src/key_management.rs`, `src/backup.rs`, `src/recovery.rs`
+- [x] T004 [P] Create `cli/src/main.rs` for the CLI application
+- [x] T005 [P] Create `data/backups/` directory
+- [x] T006 [P] Configure `tests/unit/` and `tests/integration/` directories with initial test files
+- [x] T007 Implement HMAC-SHA256 for backup checksums in `src/backup.rs`
+- [x] T008 Implement CLI argument parsing using `clap` in `cli/src/main.rs`
 
 ---
 
@@ -37,14 +37,14 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [x] T007 Implement SQLCipher integration in `db.rs` (ensure `rusqlite` is compiled with SQLCipher feature)
-- [ ] T008 Implement DEK generation and Android Keystore wrapping/unwrapping in `key_management.rs`
-- [ ] T009 Implement `PRAGMA journal_mode = WAL;` and `PRAGMA integrity_check;` logic in `db.rs`
-- [ ] T010 Implement `open_encrypted_db` function in `db.rs`
-- [ ] T011 Implement `backup_db` FFI function in `backup.rs` and expose via `ffi.rs`
-- [ ] T012 Implement `restore_db` FFI function in `recovery.rs` and expose via `ffi.rs`
-- [ ] T013 Implement append-only `transactions_history` table schema in `db.rs` (migration logic)
-- [ ] T014 Implement zeroization of sensitive keys in `key_management.rs` and `db.rs`
+- [x] T009 Implement SQLCipher integration in `db.rs` (ensure `rusqlite` is compiled with SQLCipher feature)
+- [x] T010 Implement DEK generation and Android Keystore wrapping/unwrapping in `key_management.rs`
+- [x] T011 Implement `PRAGMA journal_mode = WAL;` and `PRAGMA integrity_check;` logic in `db.rs`
+- [x] T012 Implement `open_encrypted_db` function in `db.rs`
+- [x] T013 Implement `backup_db` FFI function in `backup.rs` and expose via `ffi.rs`
+- [x] T014 Implement `restore_db` FFI function in `recovery.rs` and expose via `ffi.rs`
+- [x] T015 Implement append-only `transactions_history` table schema in `db.rs` (migration logic)
+- [x] T016 Implement zeroization of sensitive keys in `key_management.rs` and `db.rs`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -60,17 +60,17 @@
 
 **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T015 [P] [US1] Unit test for `Transaction` struct validation in `tests/unit/models_test.rs`
-- [ ] T016 [P] [US1] Unit test for `add_transaction` logic (including input validation and history recording) in `tests/unit/db_test.rs`
-- [ ] T017 [P] [US1] Unit test for `add_transaction` FFI exposure in `tests/unit/ffi_test.rs`
-- [ ] T018 [P] [US1] CLI integration test for `add` command in `tests/integration/cli_test.rs`
+- [x] T017 [P] [US1] Unit test for `Transaction` struct validation in `tests/unit/models_test.rs`
+- [x] T018 [P] [US1] Unit test for `add_transaction` logic (including input validation and history recording) in `tests/unit/db_test.rs`
+- [x] T019 [P] [US1] Unit test for `add_transaction` FFI exposure in `tests/unit/ffi_test.rs`
+- [x] T020 [P] [US1] CLI integration test for `add` command in `tests/integration/cli_test.rs`
 
 ### Implementation for User Story 1
 
-- [ ] T019 [P] [US1] Define `Transaction` struct in `src/models.rs`
-- [ ] T020 [US1] Implement `add_transaction` logic in `src/db.rs` (including input validation and writing to `transactions_history`)
-- [ ] T021 [US1] Expose `add_transaction` via FFI in `src/ffi.rs`
-- [ ] T022 [US1] Implement `add` command in `cli/src/main.rs` to call `add_transaction` FFI
+- [x] T021 [P] [US1] Define `Transaction` struct in `src/models.rs`
+- [x] T022 [US1] Implement `add_transaction` logic in `src/db.rs` (including input validation and writing to `transactions_history`)
+- [x] T023 [US1] Expose `add_transaction` via FFI in `src/ffi.rs`
+- [x] T024 [US1] Implement `add` command in `cli/src/main.rs` to call `add_transaction` FFI
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -86,15 +86,15 @@
 
 **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T023 [P] [US2] Unit test for `list_transactions` logic (reconstructing state from history) in `tests/unit/db_test.rs`
-- [ ] T024 [P] [US2] Unit test for `list_transactions` FFI exposure in `tests/unit/ffi_test.rs`
-- [ ] T025 [P] [US2] CLI integration test for `list` command in `tests/integration/cli_test.rs`
+- [x] T025 [P] [US2] Unit test for `list_transactions` logic (reconstructing state from history) in `tests/unit/db_test.rs`
+- [x] T026 [P] [US2] Unit test for `list_transactions` FFI exposure in `tests/unit/ffi_test.rs`
+- [x] T027 [P] [US2] CLI integration test for `list` command in `tests/integration/cli_test.rs`
 
 ### Implementation for User Story 2
 
-- [ ] T026 [US2] Implement `list_transactions` logic in `src/db.rs`
-- [ ] T027 [US2] Expose `list_transactions` via FFI in `src/ffi.rs`
-- [ ] T028 [US2] Implement `list` command in `cli/src/main.rs` to call `list_transactions` FFI
+- [x] T028 [US2] Implement `list_transactions` logic in `src/db.rs`
+- [x] T029 [US2] Expose `list_transactions` via FFI in `src/ffi.rs`
+- [x] T030 [US2] Implement `list` command in `cli/src/main.rs` to call `list_transactions` FFI
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -110,17 +110,17 @@
 
 **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T029 [P] [US3] Unit test for `Balance` struct in `tests/unit/models_test.rs`
-- [ ] T030 [P] [US3] Unit test for `list_balances` logic (aggregating from history) in `tests/unit/db_test.rs`
-- [ ] T031 [P] [US3] Unit test for `list_balances` FFI exposure in `tests/unit/ffi_test.rs`
-- [ ] T032 [P] [US3] CLI integration test for `balances` command in `tests/integration/cli_test.rs`
+- [ ] T031 [P] [US3] Unit test for `Balance` struct in `tests/unit/models_test.rs`
+- [ ] T032 [P] [US3] Unit test for `list_balances` logic (aggregating from history) in `tests/unit/db_test.rs`
+- [ ] T033 [P] [US3] Unit test for `list_balances` FFI exposure in `tests/unit/ffi_test.rs`
+- [ ] T034 [P] [US3] CLI integration test for `balances` command in `tests/integration/cli_test.rs`
 
 ### Implementation for User Story 3
 
-- [ ] T033 [P] [US3] Define `Balance` struct in `src/models.rs`
-- [ ] T034 [US3] Implement `list_balances` logic in `src/db.rs`
-- [ ] T035 [US3] Expose `list_balances` via FFI in `src/ffi.rs`
-- [ ] T036 [US3] Implement `balances` command in `cli/src/main.rs` to call `list_balances` FFI
+- [ ] T035 [P] [US3] Define `Balance` struct in `src/models.rs`
+- [ ] T036 [US3] Implement `list_balances` logic in `src/db.rs`
+- [ ] T037 [US3] Expose `list_balances` via FFI in `src/ffi.rs`
+- [ ] T038 [US3] Implement `balances` command in `cli/src/main.rs` to call `list_balances` FFI
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -136,15 +136,15 @@
 
 **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T037 [P] [US4] Unit test for `get_balance` logic in `tests/unit/db_test.rs`
-- [ ] T038 [P] [US4] Unit test for `get_balance` FFI exposure in `tests/unit/ffi_test.rs`
-- [ ] T039 [P] [US4] CLI integration test for `balance <person>` command in `tests/integration/cli_test.rs`
+- [ ] T039 [P] [US4] Unit test for `get_balance` logic in `tests/unit/models_test.rs`
+- [ ] T040 [P] [US4] Unit test for `get_balance` FFI exposure in `tests/unit/ffi_test.rs`
+- [ ] T041 [P] [US4] CLI integration test for `balance <person>` command in `tests/integration/cli_test.rs`
 
 ### Implementation for User Story 4
 
-- [ ] T040 [US4] Implement `get_balance` logic in `src/db.rs`
-- [ ] T041 [US4] Expose `get_balance` via FFI in `src/ffi.rs`
-- [ ] T042 [US4] Implement `balance <person>` command in `cli/src/main.rs` to call `get_balance` FFI
+- [ ] T042 [US4] Implement `get_balance` logic in `src/db.rs`
+- [ ] T043 [US4] Expose `get_balance` via FFI in `src/ffi.rs`
+- [ ] T044 [US4] Implement `balance <person>` command in `cli/src/main.rs` to call `get_balance` FFI
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -154,13 +154,13 @@
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T043 Implement automated corruption detection and recovery flow in `src/recovery.rs`
-- [ ] T044 Implement backup metadata with HMAC and backup rotation policy in `src/backup.rs`
-- [ ] T045 Refine error handling and logging across `src/db.rs`, `src/key_management.rs`, `src/backup.rs`, `src/recovery.rs`, `cli/src/main.rs`
-- [ ] T046 Update `docs/README.md`, `docs/spec-sheet.md`, `docs/ANDROID_INTEGRATION.md` with new features and guidelines
-- [ ] T047 Write integration tests for full ledger flow, including backup/restore and corruption scenarios in `tests/integration/ledger_integration_test.rs`
-- [ ] T048 Code cleanup and refactoring
-- [ ] T049 Document CLI usage and commands in `docs/CLI_USAGE.md`
+- [ ] T045 Implement automated corruption detection and recovery flow in `src/recovery.rs`
+- [ ] T046 Implement backup metadata with HMAC and backup rotation policy in `src/backup.rs`
+- [ ] T047 Refine error handling and logging across `src/db.rs`, `src/key_management.rs`, `src/backup.rs`, `src/recovery.rs`, `cli/src/main.rs`
+- [ ] T048 Update `docs/README.md`, `docs/spec-sheet.md`, `docs/ANDROID_INTEGRATION.md` with new features and guidelines
+- [ ] T049 Write integration tests for full ledger flow, including backup/restore and corruption scenarios in `tests/integration/ledger_integration_test.rs`
+- [ ] T050 Code cleanup and refactoring
+- [ ] T051 Document CLI usage and commands in `docs/CLI_USAGE.md`
 
 ---
 
@@ -258,3 +258,4 @@ With multiple developers:
 - Commit after each task or logical group
 - Stop at any checkpoint to validate story independently
 - Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+
