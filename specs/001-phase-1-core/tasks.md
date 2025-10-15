@@ -37,7 +37,7 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Implement SQLCipher integration in `db.rs` (ensure `rusqlite` is compiled with SQLCipher feature)
+- [x] T007 Implement SQLCipher integration in `db.rs` (ensure `rusqlite` is compiled with SQLCipher feature)
 - [ ] T008 Implement DEK generation and Android Keystore wrapping/unwrapping in `key_management.rs`
 - [ ] T009 Implement `PRAGMA journal_mode = WAL;` and `PRAGMA integrity_check;` logic in `db.rs`
 - [ ] T010 Implement `open_encrypted_db` function in `db.rs`
