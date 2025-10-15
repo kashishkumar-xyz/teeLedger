@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rusqlite = { version = "0.31.0", features = ["bundled", "sqlcipher", "backup"] }
+rusqlite = { version = "0.31.0", features = ["sqlcipher", "backup"] }
 jni = { version = "0.21.1", default-features = false }
 zeroize = { version = "1.7.0", features = ["derive"] }
 base64 = "0.21.7"

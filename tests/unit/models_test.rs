@@ -1,4 +1,3 @@
-
 use teeLedger::models::{Balance, Transaction};
 
 #[cfg(test)]
@@ -100,4 +99,3 @@ mod tests {
         assert_eq!(balance.total_amount, 5000);
     }
 }
-

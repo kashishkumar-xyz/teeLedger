@@ -1,5 +1,16 @@
-debug
-target
+./src/target/*
+./target/*
 **/*.rs.bk
 *.sqlite*
 .env
+
+# Universal ignore patterns
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
+/home/kaz/.cargo/registry/
+target
+target

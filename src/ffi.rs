@@ -7,7 +7,7 @@ use crate::backup::perform_online_backup;
 use crate::db::{open_encrypted_db, add_transaction, list_transactions};
 use crate::models::Transaction;
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn backup_db_ffi(
     src_db_path_ptr: *const c_char,
     dest_db_path_ptr: *const c_char,
@@ -50,7 +50,7 @@ pub extern "C" fn backup_db_ffi(
 
 use crate::recovery::perform_online_restore;
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn restore_db_ffi(
     dest_db_path_ptr: *const c_char,
     src_db_path_ptr: *const c_char,
@@ -91,8 +91,8 @@ pub extern "C" fn restore_db_ffi(
     }
 }
 
-#[no_mangle]
-pub extern "C" fn add_transaction_ffi(
+#[unsafe(no_mangle)]
+pub unsafe extern "C" fn add_transaction_ffi(
     db_path_ptr: *const c_char,
     encryption_key_ptr: *mut u8,
     key_len: c_int,
@@ -152,7 +152,7 @@ pub extern "C" fn add_transaction_ffi(
     }
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn list_transactions_ffi(
     db_path_ptr: *const c_char,
     encryption_key_ptr: *mut u8,
@@ -207,7 +207,7 @@ pub extern "C" fn list_transactions_ffi(
 }
 
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn free_transactions_ffi(
     transactions_ptr: *mut *mut c_char,
     count: c_int,
