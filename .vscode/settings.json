@@ -1,0 +1,21 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "AGENTS.md": true,
+        ".sessionExport.json": true,
+        "Cargo.lock": true,
+        "specs": true,
+        "docs": true,
+        ".vscode": true,
+        ".specify": true,
+        ".config": true,
+        ".opencode": true,
+        ".gitignore": true,
+        "src/Cargo.lock": true
+    },
+    "explorerExclude.backup": {}
+}
