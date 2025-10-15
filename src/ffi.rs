@@ -5,7 +5,7 @@ use std::slice;
 use crate::backup::perform_online_backup;
 use crate::db::open_encrypted_db;
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub unsafe extern "C" fn backup_db_ffi(
     src_db_path_ptr: *const c_char,
     dest_db_path_ptr: *const c_char,

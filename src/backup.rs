@@ -1,5 +1,4 @@
 use base64::{Engine as _, engine::general_purpose};
-use digest::NewMac;
 use hmac::{Hmac, Mac};
 use sha2::Sha256;
 

@@ -1,5 +1,4 @@
 use rand::RngCore;
-use zeroize::Zeroize;
 
 pub fn generate_dek() -> Vec<u8> {
     let mut dek = vec![0u8; 32];
